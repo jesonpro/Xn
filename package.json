@@ -1,14 +1,14 @@
 {
-  "name": "ales",
+  "name": "Nx",
   "version": "7.3.6",
   "description": ".",
-  "main": "./Xn/bot.js",
+  "main": "./Nx/bot.js",
   "scripts": {
     "start": "supervisor -s bot.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jesonpro/ales.git"
+    "url": "git+https://github.com/jesonpro/Nx.git"
   },
   "keywords": [
     "whatsapp",
