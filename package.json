@@ -1,14 +1,14 @@
 {
-  "name": "Nx",
+  "name": "Xn",
   "version": "7.3.6",
   "description": ".",
-  "main": "./Nx/bot.js",
+  "main": "./Xn/bot.js",
   "scripts": {
     "start": "supervisor -s bot.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jesonpro/Nx.git"
+    "url": "git+https://github.com/jesonpro/Xn.git"
   },
   "keywords": [
     "whatsapp",
