@@ -1,14 +1,14 @@
 {
-  "name": "Xn",
+  "name": "ales",
   "version": "7.3.6",
   "description": ".",
-  "main": "./Xn/bot.js",
+  "main": "./ales/bot.js",
   "scripts": {
     "start": "supervisor -s bot.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jesonpro/Xn.git"
+    "url": "git+https://github.com/jesonpro/ales.git"
   },
   "keywords": [
     "whatsapp",
@@ -25,8 +25,9 @@
   },
   "homepage": "https://github.com/jesonpro/ales#readme",
   "dependencies": {
-    "@adiwajshing/baileys": "3.4.1",
+    "@adiwajshing/baileys": "3.5.2",
     "@lh2020/speedtest-net": "^2.1.1",
+    "textmaker-thiccy": "1.2.1",
     "browser-id3-writer": "^4.4.0",
     "playstore-scraper": "^1.0.0",
     "axios": "^0.21.1",
