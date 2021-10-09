@@ -325,8 +325,15 @@ if (config.WORKTYPE == 'private') {
                 await message.client.sendMessage(message.jid,Buffer.from(writer.arrayBuffer), MessageType.audio, {mimetype: Mimetype.mp4Audio, quoted: message.data, ptt: false});
             });
     }));
-    Neotro.addCommand({pattern: 'video ?(.*)', fromMe: true, desc: Lang.VIDEO_DESC}, (async (message, match) => { 
-
+   Neotro.addCommand({pattern: 'video ?(.*)', fromMe: true, desc: Lang.VIDEO_DESC}, (async (message, match) => { 
+        if (match[1].includes('facebook.com')) {return await message.client.sendMessage(message.jid, '```Please Enter Valid Link!```', MessageType.text)}
+        if (match[1].includes('facebook')) {return await message.client.sendMessage(message.jid, '```Please Enter Valid Link!```', MessageType.text)}
+        if (match[1].includes('xnxx.com')) {return await message.client.sendMessage(message.jid, '```Please Enter Valid Link!```', MessageType.text)}
+        if (match[1].includes('xnxx')) {return await message.client.sendMessage(message.jid, '```Please Enter Valid Link!```', MessageType.text)}
+        if (match[1].includes('pornhub.com')) {return await message.client.sendMessage(message.jid, '```Please Enter Valid Link!```', MessageType.text)}
+        if (match[1].includes('pornhub')) {return await message.client.sendMessage(message.jid, '```Please Enter Valid Link!```', MessageType.text)}
+        if (match[1].includes('xhamster.com')) {return await message.client.sendMessage(message.jid, '```Please Enter Valid Link!```', MessageType.text)}
+        if (match[1].includes('xhamster')) {return await message.client.sendMessage(message.jid, '```Please Enter Valid Link!```', MessageType.text)}
         if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.NEED_VIDEO,MessageType.text);    
     
         var VID = '';
@@ -341,16 +348,17 @@ if (config.WORKTYPE == 'private') {
         } catch {
             return await message.client.sendMessage(message.jid,Lang.NO_RESULT,MessageType.text);
         }
-        var reply = await message.client.sendMessage(message.jid,Lang.DOWNLOADING_VIDEO,MessageType.text);
+        var reply = await message.client.sendMessage(message.jid,config.VIDEO_DOWN,MessageType.text);
 
         var yt = ytdl(VID, {filter: format => format.container === 'mp4' && ['720p', '480p', '360p', '240p', '144p'].map(() => true)});
         yt.pipe(fs.createWriteStream('./' + VID + '.mp4'));
 
         yt.on('end', async () => {
-            reply = await message.client.sendMessage(message.jid,Lang.UPLOADING_VIDEO,MessageType.text);
+            reply = await message.client.sendMessage(message.jid,config.VIDEO_UP,MessageType.text);
             await message.client.sendMessage(message.jid,fs.readFileSync('./' + VID + '.mp4'), MessageType.video, {mimetype: Mimetype.mp4});
         });
     }));
+
     Neotro.addCommand({pattern: 'yt ?(.*)', fromMe: true, desc: Lang.YT_DESC}, (async (message, match) => { 
 
         if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.NEED_WORDS,MessageType.text);    
