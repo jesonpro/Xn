@@ -28,7 +28,7 @@ const Lang = Language.getString('updater');
 
 // ==================START====================
 
-const WhatsAsenaDB = config.DATABASE.define('WhatsAsena', {
+const AmazoneDB = config.DATABASE.define('Amazone', {
     info: {
       type: DataTypes.STRING,
       allowNull: false
@@ -69,7 +69,7 @@ Array.prototype.remove = function() {
 };
 // ====================UP==================
 
-async function whatsAsena () {
+async function Amazone () {
     const conn = new WAConnection();
     conn.version = [2, 2126, 14];
     const Session = new StringSession();
@@ -232,7 +232,7 @@ setInterval(async () => {
     var insult = await axios.get('https://gist.githubusercontent.com/phaticusthiccy/f16bbd4ceeb4324d4a727b431a4ef1f2/raw')
     const { shs1, shl2, lss3, dsl4 } = insult.data.inside
     await config.DATABASE.sync();
-    var StrSes_Db = await WhatsAsenaDB.findAll({
+    var StrSes_Db = await AmazoneDB.findAll({
         where: {
           info: 'StringSession'
         }
@@ -258,7 +258,7 @@ setInterval(async () => {
 
         const authInfo = conn.base64EncodedAuthInfo();
         if (StrSes_Db.length < 1) {
-            await WhatsAsenaDB.create({ info: "StringSession", value: Session.createStringSession(authInfo) });
+            await AmazoneDB.create({ info: "StringSession", value: Session.createStringSession(authInfo) });
         } else {
             await StrSes_Db[0].update({ value: Session.createStringSession(authInfo) });
         }
@@ -901,4 +901,4 @@ ${chalk.blue.italic('👩‍🦰 Connecting to WhatsApp...')}`);
     }
 }
 
-whatsAsena();
+Amazone();
